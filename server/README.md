@@ -7,10 +7,10 @@ This module is part of a restaurant reservation service. The module displays rev
 **GET**
 
 * URL
-<'/:id/reviews'>
+```'/:id/reviews'```
 
 * Method
-<GET>
+```GET```
 
 * URL Params
 
@@ -39,10 +39,10 @@ id=[integer]
 **POST**
 
 * URL
-<'/:id/reviews'>
+```'/:id/reviews'```
 
 * Method
-<POST>
+```POST```
 
 Create a new review for a specific restaurant
 
@@ -54,10 +54,10 @@ Create a new review for a specific restaurant
 **PUT**
 
 * URL
-<'/:id/reviews'>
+```'/:id/reviews'```
 
 * Method
-<PUT>
+```PUT```
 
 Edit an existing review for a specific restaurant
 
@@ -69,10 +69,10 @@ Edit an existing review for a specific restaurant
 **DELETE**
 
 * URL
-<'/:id/reviews'>
+```'/:id/reviews'```
 
 * Method
-<DELETE>
+```DELETE```
 
 Delete an existing review for a specific restaurant
 
