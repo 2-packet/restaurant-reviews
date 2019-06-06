@@ -1,6 +1,5 @@
 CREATE TABLE restaurants (
   id                serial primary key unique,
-  name              varchar(30),
   location          varchar(30), 
   noise             varchar(10),
   recommendpercent  int,

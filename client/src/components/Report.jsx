@@ -7,7 +7,7 @@ class Report extends React.Component {
     super(props);
 
     this.componentWillMount = this.componentWillMount.bind(this);
-    this.componentWillMount = this.componentWillMount.bind(this);
+    this.componentWillUnmount = this.componentWillUnmount.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -15,7 +15,7 @@ class Report extends React.Component {
     document.addEventListener('mousedown', this.handleClick, false);
   }
 
-  componentWillUnount() {
+  componentWillUnmount() {
     document.removeEventListener('mousedown', this.handleClick, false);
   }
 

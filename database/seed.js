@@ -104,6 +104,7 @@ const Seed = {
       diner.totalreviews = Faker.random.number({ min: 0, max: 25 });
       diner.avatarcolor = Seed.getRandomColor();
       diner.isVIP = Seed.lowProbabilityRandom();
+      // write diner
       diners.push(diner);
     }
     return diners;

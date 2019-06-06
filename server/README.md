@@ -8,6 +8,7 @@ This module is part of a restaurant reservation service. The module displays rev
 
 * URL
 ```'/:id/reviews'```
+```'/:id/summary'```
 
 * Method
 ```GET```
@@ -40,6 +41,7 @@ id=[integer]
 
 * URL
 ```'/:id/reviews'```
+```'/:id/summary'```
 
 * Method
 ```POST```
@@ -55,6 +57,7 @@ Create a new review for a specific restaurant
 
 * URL
 ```'/:id/reviews'```
+```'/:id/summary'```
 
 * Method
 ```PUT```
@@ -70,6 +73,7 @@ Edit an existing review for a specific restaurant
 
 * URL
 ```'/:id/reviews'```
+```'/:id/summary'```
 
 * Method
 ```DELETE```
