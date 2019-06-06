@@ -16,11 +16,12 @@ This module is part of a restaurant reservation service. The module displays rev
 
 Required:
 
-id=[integer]
+    id=[integer]
 
 * Sample Response
 
-```{
+```
+{
 "restaurant": int,
 "text": string,
 "date": date,
@@ -54,11 +55,12 @@ id=[integer]
 
 Required:
 
-id=[integer]
+    id=[integer]
 
 * Sample Response
 
-```{
+```
+{
 "location": string,
 "noise": string,
 "recommendpercent": int,
@@ -93,14 +95,16 @@ id=[integer]
 Create a new review for a specific restaurant
 
 * Request Data:
-  ```{
+  ```
+  {
       "id(diners): int,
       "text": string,
       "overall": int,
       "food": int,
       "service": int,
       "ambience": int,
-  }```
+  }
+  ```
 
 * Success Response:
     * Code: 200
@@ -118,14 +122,16 @@ Create a new review for a specific restaurant
 Edit an existing review for a specific restaurant
 
 * Request Data:
-  ```{
+  ```
+  {
       "id(diners): int,
       "text": string,
       "overall": int,
       "food": int,
       "service": int,
       "ambience": int,
-  }```
+  }
+  ```
 
 * Success Response:
     * Code: 200
@@ -136,7 +142,6 @@ Edit an existing review for a specific restaurant
 
 * URL
 ```'/:id/reviews'```
-```'/:id/summary'```
 
 * Method
 ```DELETE```
