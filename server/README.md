@@ -8,6 +8,43 @@ This module is part of a restaurant reservation service. The module displays rev
 
 * URL
 ```'/:id/reviews'```
+
+* Method
+```GET```
+
+* URL Params
+
+Required:
+
+id=[integer]
+
+* Sample Response
+
+```{
+"restaurant": int,
+"text": string,
+"date": date,
+"overall": int,
+"food": int,
+"service": int,
+"ambience": int,
+"wouldrecommend": boolean,
+"tags": string,
+"firstname": string,
+"lastname": string,
+"city": string,
+"avatarcolor": string,
+"isvip": boolean,
+"totalreviews": int
+}
+```
+
+* Success Response:
+    * Code: 200
+* Error Response:
+    * Code: 500
+
+* URL
 ```'/:id/summary'```
 
 * Method
@@ -19,19 +56,27 @@ Required:
 
 id=[integer]
 
-* Data Params
+* Sample Response
 
 ```{
 "location": string,
 "noise": string,
-"recommendPercent": integer,
-"valueRating": string,
-"averageOverall": string,
-"averageFood": string,
-"averageAmbience": string,
-"averageService": string
+"recommendpercent": int,
+"valuerating": int,
+"averageoverall": int,
+"averagefood": int,
+"averageambience": int,
+"averageservice": int,
+"tags": string,
+"firstname": string,
+"lastname": string,
+"city": string,
+"avatarcolor": string,
+"isvip": boolean,
+"totalreviews": int
 }
 ```
+
 * Success Response:
     * Code: 200
 * Error Response:
@@ -41,12 +86,21 @@ id=[integer]
 
 * URL
 ```'/:id/reviews'```
-```'/:id/summary'```
 
 * Method
 ```POST```
 
 Create a new review for a specific restaurant
+
+* Request Data:
+  ```{
+      "id(diners): int,
+      "text": string,
+      "overall": int,
+      "food": int,
+      "service": int,
+      "ambience": int,
+  }```
 
 * Success Response:
     * Code: 200
@@ -57,12 +111,21 @@ Create a new review for a specific restaurant
 
 * URL
 ```'/:id/reviews'```
-```'/:id/summary'```
 
 * Method
 ```PUT```
 
 Edit an existing review for a specific restaurant
+
+* Request Data:
+  ```{
+      "id(diners): int,
+      "text": string,
+      "overall": int,
+      "food": int,
+      "service": int,
+      "ambience": int,
+  }```
 
 * Success Response:
     * Code: 200
