@@ -4,6 +4,10 @@ const squel = require('squel');
 const moment = require('moment');
 const dbconf = require('../config/db_config.js');
 
+const NUM_RESTAURANTS = 10000000;
+const NUM_DINERS = 2000;
+const NUM_REVIEWS = NUM_RESTAURANTS * 2;
+
 const Seed = {
   foodWords: ['pot roast', 'chicken', 'sushi', 'marshmallows', 'pumpkin pie', 'wine'],
   tagWords: ['groups', 'kids', 'gluten free', 'vegan'],
@@ -63,7 +67,7 @@ const Seed = {
   createRestaurants() {
     //  create 5 restaurants
     const restaurants = [];
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < NUM_RESTAURANTS; i++) {
       const restaurant = {};
       restaurant.name = Faker.lorem.word();
       restaurant.location = Faker.address.city().replace(/'/g, '');
@@ -96,12 +100,11 @@ const Seed = {
   createDiners() {
     //  create 50 diners
     const diners = [];
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < NUM_DINERS; i++) {
       const diner = {};
       diner.firstname = Faker.name.firstName().replace(/'/g, '');
       diner.lastname = Faker.name.lastName().replace(/'/g, '');
       diner.city = Faker.address.city().replace(/'/g, '');
-      diner.totalreviews = Faker.random.number({ min: 0, max: 25 });
       diner.avatarcolor = Seed.getRandomColor();
       diner.isVIP = Seed.lowProbabilityRandom();
       // write diner
@@ -112,10 +115,10 @@ const Seed = {
   createReviews() {
     //  create 600 reviews
     const reviews = [];
-    for (let i = 0; i < 600; i++) {
+    for (let i = 0; i < NUM_REVIEWS; i++) {
       const review = {};
-      review.restaurant = Faker.random.number({ min: 1, max: 5 });
-      review.diner = Faker.random.number({ min: 1, max: 50 });
+      review.restaurant = Faker.random.number({ min: 1, max: NUM_RESTAURANTS });
+      review.diner = Faker.random.number({ min: 1, max: NUM_DINERS });
       review.text = Faker.lorem.sentences();
       if (Math.random() > 0.7) {
         review.text += ` ${Faker.lorem.sentences()}`;

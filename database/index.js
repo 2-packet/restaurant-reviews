@@ -4,6 +4,7 @@ const dbconf = require('../config/db_config.js');
 
 
 const makeQuery = (client, sql, callback) => {
+  console.log(sql);
   client.connect()
     .then(() => {
       client.query(sql)
@@ -46,8 +47,7 @@ module.exports.getAllReviews = (restaurantId, callback) => {
     diners.lastname,
     diners.city,
     diners.avatarcolor,
-    diners.isvip,
-    diners.totalreviews
+    diners.isvip
     from reviews INNER JOIN diners 
     on (reviews.diner = diners.id) 
     where reviews.restaurant = ${restaurantId}`;

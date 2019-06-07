@@ -1,3 +1,6 @@
+DROP SCHEMA public CASCADE;
+CREATE SCHEMA public;
+
 CREATE TABLE restaurants (
   id                serial primary key unique,
   location          varchar(30), 
@@ -10,15 +13,17 @@ CREATE TABLE restaurants (
   valuerating       numeric
 );
 
+\copy restaurants(id,location,noise,recommendpercent,averageoverall,averageservice, averageambience, averagefood, valuerating) FROM './restaurants.csv' DELIMITER '|' CSV;
+
 CREATE TABLE diners (
   id            serial primary key unique,
   firstname     varchar(30),
   lastname      varchar(30),
   city          varchar(30),
   avatarcolor   varchar(10),
-  isvip         boolean,
-  totalreviews  int
+  isvip         boolean
 );
+\copy diners(id, firstname, lastname, city, avatarcolor, isvip) FROM './diners.csv' DELIMITER '|' CSV;
 
 CREATE TABLE reviews (
   id              serial primary key unique,
@@ -35,4 +40,6 @@ CREATE TABLE reviews (
   foreign key (diner) references diners(id),
   foreign key (restaurant) references restaurants(id)
 );
+\copy reviews(id,restaurant,diner,text,date,overall,food,service,ambience,wouldrecommend,tags) FROM './reviews.csv' DELIMITER '|' CSV;
+
 

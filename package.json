@@ -22,7 +22,7 @@
     "start": "node ./server/server.js",
     "add": "eslint '*/**' --ignore-path .lintignore && git add -A",
     "pg-setup": "brew install postgres && brew services start postgres && createdb reviews && psql reviews",
-    "seed": "node database/seed.js",
+    "seed": "node newDatabase/seed.js",
     "test": "jest",
     "dockerstart": "node ./database/seed.js && node ./server/server.js"
   },
