@@ -1,3 +1,4 @@
+require('newrelic');
 const path = require('path');
 const cors = require('cors');
 const express = require('express');
@@ -31,7 +32,6 @@ app.get('/:id/summary', (req, res) => {
 
 app.get('/:id/reviews', (req, res) => {
   db.getAllReviews(req.params.id, (err, result) => {
-    console.log("HELLO, ITS ME");
     if (err) {
       res.status(500);
       res.end();

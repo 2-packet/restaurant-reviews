@@ -7,6 +7,9 @@ import ReviewList from './reviewList.jsx';
 import { comparisons, Models } from '../helpers';
 import styles from '../styles/styles.module.css';
 
+
+const databaseString = 'http://localhost:3010/';
+
 export default class Reviews extends React.Component {
   constructor(props) {
     super(props);
@@ -66,7 +69,7 @@ export default class Reviews extends React.Component {
   getSummaryData() {
     const { restaurantId } = this.props;
     request
-      .get(`http://localhost:3010/${restaurantId}/summary`)
+      .get(`${databaseString}${restaurantId}/summary`)
       // .get(`http://localhost:3010/${restaurantId}/summary`)
       .then((res) => {
         this.setState({
@@ -79,7 +82,7 @@ export default class Reviews extends React.Component {
   getReviewsData() {
     const { restaurantId } = this.props;
     request
-      .get(`http://localhost:3010/${restaurantId}/reviews`)
+      .get(`${databaseString}${restaurantId}/reviews`)
       .then((res) => {
         this.setState({
           reviews: res.body,

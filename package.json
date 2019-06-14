@@ -23,6 +23,7 @@
     "add": "eslint '*/**' --ignore-path .lintignore && git add -A",
     "pg-setup": "brew install postgres && brew services start postgres && createdb reviews && psql reviews",
     "seed": "node newDatabase/seed.js",
+    "seedCassandra": "node newDatabase/seedCassandra.js",
     "test": "jest",
     "dockerstart": "node ./database/seed.js && node ./server/server.js"
   },
@@ -36,6 +37,7 @@
     "lodash": "^4.17.11",
     "mini-css-extract-plugin": "^0.7.0",
     "moment": "^2.24.0",
+    "newrelic": "^5.9.1",
     "pg": "^7.11.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",

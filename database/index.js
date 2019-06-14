@@ -1,36 +1,42 @@
-const { Client } = require('pg');
-const squel = require('squel');
+const { Pool } = require('pg');
+// const squel = require('squel');
 const dbconf = require('../config/db_config.js');
+const pool = new Pool({
+  user: dbconf.role,
+  host: dbconf.host,
+  database: 'reviews',
+  password: dbconf.password,
+  port: 5432
+});
 
-
-const makeQuery = (client, sql, callback) => {
-  console.log(sql);
-  client.connect()
-    .then(() => {
-      client.query(sql)
+const makeQuery = (pool, sql, callback) => {
+  // console.log(sql);
+  // pool.connect()
+    // .then(() => {
+      pool.query(sql)
         .then((res) => {
           callback(null, res.rows);
-          client.end();
+          // pool.end();
         })
         .catch((err) => {
           callback(err);
-          client.end();
+          // pool.end();
         });
-    })
-    .catch((err) => {
-      callback(err);
-      client.end();
-    });
+    // })
+    // .catch((err) => {
+    //   callback(err);
+    //   // pool.end();
+    // });
 };
 
 module.exports.getAllReviews = (restaurantId, callback) => {
-  const client = new Client({
-    user: dbconf.role,
-    host: dbconf.host,
-    database: 'reviews',
-    password: dbconf.password,
-    port: 5432
-  });
+  // const pool = new Pool({
+  //   user: dbconf.role,
+  //   host: dbconf.host,
+  //   database: 'reviews',
+  //   password: dbconf.password,
+  //   port: 5432
+  // });
 
   const sql = `SELECT 
     reviews.id, 
@@ -49,33 +55,43 @@ module.exports.getAllReviews = (restaurantId, callback) => {
     diners.avatarcolor,
     diners.isvip
     from reviews INNER JOIN diners 
-    on (reviews.diner = diners.id) 
-    where reviews.restaurant = ${restaurantId}`;
+    on (reviews.diner = diners.id)
+    and reviews.restaurant = ${restaurantId}`;
 
-  makeQuery(client, sql, callback);
+
+  makeQuery(pool, sql, callback);
 };
 
 module.exports.getSummary = (restaurantId, callback) => {
   // get restaurant summary info from restaurant table
-  const client = new Client({
-    user: dbconf.role,
-    host: dbconf.host,
-    database: 'reviews',
-    password: dbconf.password,
-    port: 5432
-  });
-  const sql = squel.select()
-    .from('restaurants')
-    .field('restaurants.location')
-    .field('restaurants.noise')
-    .field('restaurants.recommendpercent', 'recommendPercent')
-    .field('restaurants.valuerating', 'valueRating')
-    .field('restaurants.averageoverall', 'averageOverall')
-    .field('restaurants.averagefood', 'averageFood')
-    .field('restaurants.averageambience', 'averageAmbience')
-    .field('restaurants.averageservice', 'averageService')
-    .where(`id = ${restaurantId}`)
-    .toString();
-
-  makeQuery(client, sql, callback);
+  // const pool = new pool({
+  //   user: dbconf.role,
+  //   host: dbconf.host,
+  //   database: 'reviews',
+  //   password: dbconf.password,
+  //   port: 5432
+  // });
+  const sql = `SELECT 
+    restaurants.location,
+    restaurants.noise,
+    restaurants.recommendpercent,
+    restaurants.averageoverall,
+    restaurants.averageservice,
+    restaurants.averageambience,
+    restaurants.averagefood,
+    restaurants.valuerating
+    from restaurants where id = ${restaurantId}`;
+  // squel.select()
+  //   .from('restaurants')
+  //   .field('restaurants.location')
+  //   .field('restaurants.noise')
+  //   .field('restaurants.recommendpercent', 'recommendPercent')
+  //   .field('restaurants.valuerating', 'valueRating')
+  //   .field('restaurants.averageoverall', 'averageOverall')
+  //   .field('restaurants.averagefood', 'averageFood')
+  //   .field('restaurants.averageambience', 'averageAmbience')
+  //   .field('restaurants.averageservice', 'averageService')
+  //   .where(`id = ${restaurantId}`)
+  //   .toString();
+  makeQuery(pool, sql, callback);
 };
