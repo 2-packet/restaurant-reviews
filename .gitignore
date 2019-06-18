@@ -33,3 +33,5 @@ public/bundle.js
 config/db_config.js
 
 *.csv
+
+newrelic.js

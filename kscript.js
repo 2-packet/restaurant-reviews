@@ -9,10 +9,10 @@ export let options = {
 
 export default function() {
     let id = Math.floor(Math.random() * 10000000)
-    // let res = http.get(`http://localhost:3010/${id}/reviews`);
-    // check(res, {
-    //     "success": (r) => r.status == 200
-    // });
+    let res = http.get(`http://localhost:3010/${id}/reviews`);
+    check(res, {
+        "success": (r) => r.status == 200
+    });
     let res2 = http.get(`http://localhost:3010/${id}/summary`);
     check(res2, {
         "success": (r) => r.status == 200

@@ -1,6 +1,6 @@
-DROP SCHEMA public CASCADE;
-CREATE SCHEMA public;
-
+DROP DATABASE IF EXISTS mydb;
+CREATE DATABASE mydb;
+\connect mydb
 CREATE TABLE restaurants (
   id                serial primary key unique,
   location          varchar(30), 
@@ -40,6 +40,12 @@ CREATE TABLE reviews (
   foreign key (diner) references diners(id),
   foreign key (restaurant) references restaurants(id)
 );
+//ALTER TABLE reviews ADD CONSTRAINT fk_diner FOREIGN KEY (diner) references diners(id)
+//ALTER TABLE reviews ADD CONSTRAINT fk_restaurant FOREIGN KEY(restaurant) references restaurants(id)
+
 \copy reviews(id,restaurant,diner,text,date,overall,food,service,ambience,wouldrecommend,tags) FROM './reviews.csv' DELIMITER '|' CSV;
+
+CREATE INDEX review_idx ON reviews(restaurant);
+
 
 
