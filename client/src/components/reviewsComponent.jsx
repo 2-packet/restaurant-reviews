@@ -8,7 +8,7 @@ import { comparisons, Models } from '../helpers';
 import styles from '../styles/styles.module.css';
 
 
-const databaseString = 'http://localhost:3010/';
+const databaseString = 'http://52.53.158.106:3010/';
 
 export default class Reviews extends React.Component {
   constructor(props) {

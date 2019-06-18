@@ -21,6 +21,7 @@ app.get('/:id', (req, res) => {
 app.get('/:id/summary', (req, res) => {
   db.getSummary(req.params.id, (err, result) => {
     if (err) {
+      console.log(err);
       res.status(500);
       res.end();
     } else {

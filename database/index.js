@@ -3,7 +3,7 @@ const { Pool } = require('pg');
 const dbconf = require('../config/db_config.js');
 const pool = new Pool({
   user: 'postgres',
-  host: 'ec2-54-215-249-250.us-west-1.compute.amazonaws.com',
+  host: '13.52.186.196',
   database: 'mydb',
   password: 'life',
   port: 5432
