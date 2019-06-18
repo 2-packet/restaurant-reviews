@@ -2,10 +2,10 @@ const { Pool } = require('pg');
 // const squel = require('squel');
 const dbconf = require('../config/db_config.js');
 const pool = new Pool({
-  user: dbconf.role,
-  host: dbconf.host,
-  database: 'reviews',
-  password: dbconf.password,
+  user: 'postgres',
+  host: 'ec2-54-215-249-250.us-west-1.compute.amazonaws.com',
+  database: 'mydb',
+  password: 'life',
   port: 5432
 });
 
