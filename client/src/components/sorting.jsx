@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SortOptions from './SortOptions.jsx';
+import SortOptions from './sortOptions.jsx';
 import FilterButton from './FilterButton.jsx';
 import { sortCaretDown, sortCaretUp } from '../styles/svgs/svgs.jsx';
 import styles from '../styles/styles.module.css';
