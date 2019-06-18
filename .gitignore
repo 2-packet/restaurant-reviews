@@ -32,3 +32,5 @@ coverage
 config/db_config.js
 
 *.csv
+
+key.js
