@@ -27,11 +27,8 @@ coverage
 .grunt
 
 # Compiled Dirs (http://nodejs.org/api/addons.html)
-public/bundle.js
 
 # Local Postgres Role Name
 config/db_config.js
 
 *.csv
-
-newrelic.js
